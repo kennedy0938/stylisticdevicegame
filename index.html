@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stylistic Devices Game</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Include jsPDF for exporting results -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body class="light">
+<div class="container light">
+    <!-- Game Title -->
+    <h1>Stylistic Devices Game</h1>
+
+    <!-- Game Settings -->
+    <div id="settings">
+        <label for="difficulty">Select Difficulty:</label>
+        <select id="difficulty">
+            <option value="all">All</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+        </select>
+
+        <label for="theme">Select Theme:</label>
+        <select id="theme">
+            <option value="light">Light Mode</option>
+            <option value="dark">Dark Mode</option>
+            <option value="colorful">Colorful Mode</option>
+        </select>
+         <label for="poem-selection">Select Poem:</label>
+        <select id="poem-selection">
+            <option value="default">Select Poem</option>
+        </select>
+
+        <label><input type="checkbox" id="randomize"> Randomize Questions</label>
+        <button id="start-button">Start Game</button>
+    </div>
+
+     <div id="poem-text-display"></div>
+
+    <!-- Game Progress Bar -->
+    <div id="progress-bar-container">
+        <div id="progress-bar"></div>
+    </div>
+
+    <!-- Game Content -->
+    <div id="game">
+        <!-- Timer -->
+        <div id="timer">Time Left: 10s</div>
+
+        <!-- Question and Options -->
+        <div id="question-container">
+            <p id="question-text"></p>
+            <div id="options-container"></div>
+        </div>
+
+        <!-- Feedback and Score -->
+        <p id="feedback"></p>
+        <p id="score">Score: 0</p>
+
+        <!-- Buttons -->
+        <div class="button-container">
+            <button id="next-button" style="display: none;">Next Question</button>
+            <button id="hint-button">Hint</button>
+            <button id="learn-more-button">Learn More</button>
+            <button id="play-again-button" style="display: none;">Play Again</button>
+            <button id="export-button">Export Results</button>
+        </div>
+    </div>
+
+    <!-- Save and Load Progress -->
+    <div id="save-load-buttons">
+        <button id="save-button">Save Progress</button>
+        <button id="load-button">Load Progress</button>
+    </div>
+
+    <!-- Assessment Report -->
+    <div id="report"></div>
+</div>
+
+    <footer>
+        <p>Created by S.Kennedy 2025</p>
+    </footer>
+
+<!-- Script -->
+<script src="script.js"></script>
+</body>
+</html>

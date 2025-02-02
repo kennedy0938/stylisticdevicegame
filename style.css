@@ -1,0 +1,348 @@
+/* General Styles */
+body {
+  font-family: Arial, sans-serif;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  margin: 0;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.container {
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  max-width: 500px;
+  width: 100%;
+  transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+h1 {
+  color: inherit;
+}
+
+/* Game Settings */
+#settings {
+  margin-bottom: 20px;
+}
+
+#settings label {
+  display: block;
+  margin: 10px 0 5px;
+}
+
+#settings select,
+#settings button {
+  padding: 10px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  margin: 5px 0;
+  cursor: pointer;
+}
+
+#settings button {
+  background-color: #007bff;
+  color: #fff;
+}
+
+#settings button:hover {
+  background-color: #0056b3;
+}
+
+/* Game Container */
+#game {
+  display: none; /* Hide the game initially */
+}
+
+/* Timer */
+#timer {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Question and Options */
+#question-text {
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+
+#options-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+#options-container button {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#options-container button:hover {
+  background-color: #0056b3;
+}
+
+/* Feedback and Score */
+#feedback {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+#score {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+/* Progress Bar */
+#progress-bar-container {
+  width: 100%;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+#progress-bar {
+  height: 10px;
+  background-color: #007bff;
+  border-radius: 5px;
+  width: 0%; /* Updated dynamically */
+  transition: width 0.3s;
+}
+
+/* Images */
+img {
+  max-width: 100%;
+  height: auto;
+  margin-bottom: 10px;
+}
+
+/* Assessment Report */
+#report {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#report h3 {
+  margin-top: 0;
+}
+
+#report p {
+  margin: 5px 0;
+}
+
+/* Themes */
+body.light {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.container.light {
+  background-color: #fff;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+body.dark {
+  background-color: #333;
+  color: #fff;
+}
+
+.container.dark {
+  background-color: #444;
+  box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+}
+
+body.colorful {
+  background-color: #ffcc00;
+  color: #333;
+}
+
+.container.colorful {
+  background-color: #ff6666;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Mobile Optimization */
+@media (max-width: 600px) {
+  .container {
+      padding: 10px;
+      max-width: 90%;
+  }
+
+  #options-container button {
+      font-size: 0.9em;
+      padding: 8px 16px;
+  }
+
+  #timer {
+      font-size: 1em;
+  }
+
+  #question-text {
+      font-size: 1em;
+  }
+}
+
+/* General Button Styles */
+button {
+  padding: 10px 20px;
+  font-size: 1em;
+  border: none;
+  border-radius: 5px;
+  background-color: #007bff;
+  color: #fff;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 5px; /* Add margin to space out buttons */
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+/* Specific Button Styles */
+#start-button {
+  background-color: #28a745;
+}
+
+#start-button:hover {
+  background-color: #218838;
+}
+
+#play-again-button,
+#export-button {
+  background-color: #ffc107;
+  color: #000;
+}
+
+#play-again-button:hover,
+#export-button:hover {
+  background-color: #e0a800;
+}
+
+#hint-button,
+#learn-more-button {
+  background-color: #17a2b8;
+}
+
+#hint-button:hover,
+#learn-more-button:hover {
+  background-color: #138496;
+}
+
+#save-button,
+#load-button {
+  background-color: #6c757d;
+}
+
+#save-button:hover,
+#load-button:hover {
+  background-color: #5a6268;
+}
+
+/* Button Container for Better Spacing */
+.button-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px; /* Space between buttons */
+  margin-top: 20px;
+}
+
+/* Adjust Progress Bar and Timer */
+#progress-bar-container {
+  width: 100%;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+#progress-bar {
+  height: 10px;
+  background-color: #007bff;
+  border-radius: 5px;
+  width: 0%; /* Updated dynamically */
+  transition: width 0.3s;
+}
+
+#timer {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* Feedback and Score */
+#feedback {
+  margin-top: 20px;
+  font-weight: bold;
+}
+
+#score {
+  margin-top: 20px;
+  font-size: 1.2em;
+}
+
+/* Assessment Report */
+#report {
+  margin-top: 20px;
+  padding: 10px;
+  background-color: #f8f9fa;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+#report h3 {
+  margin-top: 0;
+}
+
+#report p {
+  margin: 5px 0;
+}
+
+/* Poem Text Display */
+#poem-text-display {
+  white-space: pre-line;
+  text-align: left;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+}
+/* Existing styles here... */
+
+body {
+  display: flex;         /* Enable flexbox */
+  flex-direction: column; /* Stack content vertically */
+  min-height: 100vh;     /* Ensure body is at least viewport height */
+  margin: 0;             /* Remove default margin */
+  font-family: Arial, sans-serif;
+}
+
+
+.container {
+  flex: 1;              /* Allow container to grow */
+  /* Add any other container styles you have */
+   max-width: 800px;
+   margin: 20px auto;
+   padding: 20px;
+   border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+
+footer {
+  text-align: center;
+  padding: 10px;
+  background-color: #f0f0f0; /* Light gray background */
+  margin-top: auto; /* Push footer to bottom */
+}

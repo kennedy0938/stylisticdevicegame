@@ -4,28 +4,28 @@ const poems = [
       title: "The Road Not Taken",
       author: "Robert Frost",
       text: `Two roads diverged in a yellow wood,
-And sorry I could not travel both
-And be one traveler, long I stood
-And looked down one as far as I could
-To where it bent in the undergrowth;
-
-Then took the other, as just as fair,
-And having perhaps the better claim,
-Because it was grassy and wanted wear;
-Though as for that the passing there
-Had worn them really about the same,
-
-And both that morning equally lay
-In leaves no step had trodden black.
-Oh, I kept the first for another day!
-Yet knowing how way leads on to way,
-I doubted if I should ever come back.
-
-I shall be telling this with a sigh
-Somewhere ages and ages hence:
-Two roads diverged in a wood, and I—
-I took the one less traveled by,
-And that has made all the difference.`,
+      And sorry I could not travel both
+      And be one traveler, long I stood
+      And looked down one as far as I could
+      To where it bent in the undergrowth;
+  
+      Then took the other, as just as fair,
+      And having perhaps the better claim,
+      Because it was grassy and wanted wear;
+      Though as for that the passing there
+      Had worn them really about the same,
+  
+      And both that morning equally lay
+      In leaves no step had trodden black.
+      Oh, I kept the first for another day!
+      Yet knowing how way leads on to way,
+      I doubted if I should ever come back.
+  
+      I shall be telling this with a sigh
+      Somewhere ages and ages hence:
+      Two roads diverged in a wood, and I—
+      I took the one less traveled by,
+      And that has made all the difference.`,
       questions: [
           {
               question: "What is the stylistic device used in the phrase 'Two roads diverged in a yellow wood'?",
@@ -51,39 +51,39 @@ And that has made all the difference.`,
               hint: "Consider how the road is described.",
               learnMore: "Personification gives human qualities to non-human things. Learn more <a href='https://literarydevices.net/personification/' target='_blank'>here</a>."
           }
-
+  
       ]
   },
   {
       title: "I Wandered Lonely as a Cloud",
       author: "William Wordsworth",
       text: `I wandered lonely as a cloud
-That floats on high o'er vales and hills,
-When all at once I saw a crowd,
-A host, of golden daffodils;
-Beside the lake, beneath the trees,
-Fluttering and dancing in the breeze.
-
-Continuous as the stars that shine
-And twinkle on the milky way,
-They stretched in never-ending line
-Along the margin of a bay:
-Ten thousand saw I at a glance,
-Tossing their heads in sprightly dance.
-
-The waves beside them danced; but they
-Out-did the sparkling waves in glee:
-A poet could not but be gay,
-In such a jocund company:
-I gazed—and gazed—but little thought
-What wealth the show to me had brought:
-
-For oft, when on my couch I lie
-In vacant or in pensive mood,
-They flash upon that inward eye
-Which is the bliss of solitude;
-And then my heart with pleasure fills,
-And dances with the daffodils.`,
+      That floats on high o'er vales and hills,
+      When all at once I saw a crowd,
+      A host, of golden daffodils;
+      Beside the lake, beneath the trees,
+      Fluttering and dancing in the breeze.
+  
+      Continuous as the stars that shine
+      And twinkle on the milky way,
+      They stretched in never-ending line
+      Along the margin of a bay:
+      Ten thousand saw I at a glance,
+      Tossing their heads in sprightly dance.
+  
+      The waves beside them danced; but they
+      Out-did the sparkling waves in glee:
+      A poet could not but be gay,
+      In such a jocund company:
+      I gazed—and gazed—but little thought
+      What wealth the show to me had brought:
+  
+      For oft, when on my couch I lie
+      In vacant or in pensive mood,
+      They flash upon that inward eye
+      Which is the bliss of solitude;
+      And then my heart with pleasure fills,
+      And dances with the daffodils.`,
       questions: [
           {
               question: "What is the stylistic device used in the line 'I wandered lonely as a cloud'?",
@@ -92,7 +92,7 @@ And dances with the daffodils.`,
               difficulty: "easy",
               hint: "Think of the words used to compare the poet to the cloud.",
               learnMore: "Similes compare two things using 'like' or 'as'. Learn more <a href='https://literarydevices.net/simile/' target='_blank'>here</a>."
-
+  
           },
           {
               question: "What is the effect of using the phrase 'fluttering and dancing' to describe the daffodils?",
@@ -294,6 +294,7 @@ let players = [];
 let currentPlayerIndex = 0;
 let currentPoem = null; // Add currentPoem variable
 let poemReadingTime = 5; // Time in seconds to read poem
+let backgroundMusic; // Added variable for background music
 
 
 // DOM Elements
@@ -357,9 +358,9 @@ function resetTimer() {
 
 // Question Loading
 function loadQuestion() {
-   resetTimer(); // Reset timer before loading the question
+  resetTimer(); // Reset timer before loading the question
   updateProgressBar();
-// Check if a poem was selected
+  // Check if a poem was selected
   if (currentPoem) {
       // Delay the timer start to let the player read the poem
       setTimeout(() => {
@@ -367,14 +368,14 @@ function loadQuestion() {
           startQuestionLoad();
       }, poemReadingTime * 1000);
   } else {
-       startTimer(); // If no poem, start the timer immediately
-       startQuestionLoad();
+      startTimer(); // If no poem, start the timer immediately
+      startQuestionLoad();
   }
 }
 // Start question load
 function startQuestionLoad()
 {
-   const currentQuestion = filteredQuestions[currentQuestionIndex];
+  const currentQuestion = filteredQuestions[currentQuestionIndex];
   questionText.textContent = currentQuestion.question;
   optionsContainer.innerHTML = "";
 
@@ -480,6 +481,12 @@ function endGame() {
   const unlockedAchievement = checkAchievements();
   if (unlockedAchievement) {
       alert(`Congratulations! You unlocked: ${unlockedAchievement}`);
+  }
+  
+  // Stop background music
+  if(backgroundMusic) {
+      backgroundMusic.pause();
+      backgroundMusic.currentTime = 0;
   }
 }
 
@@ -601,11 +608,22 @@ startButton.addEventListener("click", () => {
   if (document.getElementById("randomize").checked) {
       filteredQuestions = shuffleArray(filteredQuestions);
   }
- currentQuestionIndex = 0;
+  currentQuestionIndex = 0;
   score = 0;
   scoreDisplay.textContent = `Score: ${score}`;
   gameContainer.style.display = "block";
   startButton.style.display = "none";
+
+  // Start background music
+  if (!backgroundMusic) {
+      backgroundMusic = new Audio("audio/background.mp3");
+      backgroundMusic.loop = true;
+      backgroundMusic.volume = 0.2; // Reduced volume to 20%
+       backgroundMusic.play();
+  } else {
+    backgroundMusic.play();
+  }
+
   loadQuestion();
 });
 
